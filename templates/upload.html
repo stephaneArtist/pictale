@@ -1,29 +1,51 @@
 <!doctype html>
-<title>Python Flask File Upload Example</title>
-<h2>Select a file to upload</h2>
-<p>
-	{% with messages = get_flashed_messages() %}
-	  {% if messages %}
-		<ul>
-		{% for message in messages %}
-		  <li>{{ message }}</li>
-		{% endfor %}
-		</ul>
-	  {% endif %}
-	{% endwith %}
-</p>
-{% if filename %}
-	<div>
-		<img src="{{ url_for('display_image', filename=filename) }}">
-	</div>
-{% endif %}
-<form method="post" action="/" enctype="multipart/form-data">
-    <dl>
-		<p>
-			<input type="file" name="file" autocomplete="off" required>
-		</p>
-    </dl>
-    <p>
-		<input type="submit" value="Submit">
-	</p>
-</form>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>PICTALE</title>
+	</head>
+	<body style="background-color: grey;">
+		<div style="text-align: center;">
+			<h2>Select an image to create a history</h2>
+		</div>
+		<div style="text-align: center; background-color: grey;">
+			<p>
+				{% with messages = get_flashed_messages() %}
+				  {% if messages %}
+					<ul>
+					{% for message in messages %}
+					  <li>{{ message }}</li>
+					{% endfor %}
+					</ul>
+				  {% endif %}
+				{% endwith %}
+			</p>
+			{% if filename %}
+				<div>
+					<img src="{{ url_for('display_image', filename=filename) }}">
+				</div>
+			{% endif %}
+			<form method="post" action="/" enctype="multipart/form-data">
+				<dl>
+					<p>
+						<input type="file" name="file" autocomplete="off" required>
+					</p>
+					<p>
+						<label for="character_1">Personnage 1:</label>
+						<input type="text" id="character_1" name="character_1" size="20"><br>
+						<label for="character_2">Personnage 2:</label>
+						<input type="text" id="character_2" name="character_2" size="20"><br>
+						<label for="character_3">Personnage 3:</label>
+						<input type="text" id="character_3" name="character_3" size="20"><br>
+						<label for="place">Lieux (ville/pays):</label>
+						<input type="text" id="place" name="place" size="20"><br>
+					</p>
+				</dl>
+				<p>
+					<input type="submit" value="Submit">
+				</p>
+			</form>
+		</div>
+	</body>
+	
+</html>
